@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>javascript_practice</title>
+<style>
+body{
+	color: black;
+}
+
+h1{
+	color: green;
+}
+
+.button-result{
+background-color: blue;
+color: white;
+padding:5px;
+font-weight: bold;
+font-size: 22px;
+border-radius: 10px;
+}
+
+.button-result:hover{
+	background-color: rgb(33,40,126);
+	color: rgb(0,128,255);
+	transition: 2.0s;
+}
+
+.button-reset{
+background-color: red;
+color: white;
+padding:5px;
+font-weight: bold;
+font-size: 22px;
+border-radius: 10px;
+}
+
+.button-reset:hover{
+	background-color: rgb(151,0,0);
+	color: rgb(255,98,98);
+	transition: 2.0s;
+}
+
+/*button:hover{
+	background-color: gray;
+	color: black;
+	transition: 1.0s;
+}*/
+
+.container-1{
+margin: 0 auto;
+text-align: center;
+width: 70%;
+}
+
+.flex-box-container-1{
+	display: flex;
+	border: 1px black solid;
+	padding: 10px;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.flex-box-container-1 div{
+	display: flex;
+	border: 1px black solid;
+	padding: 10px;
+	align-items: center;
+
+}
+
+footer{
+	color: white;
+	background-color: green;
+	text-align: center;
+}
+</style>
+</head>
+
+<body>
+ <!-- <h1 id="demo">Me</h1>
+
+ <h2 id="demo1">My number</h2> -->
+
+<div class="container-1">
+ <h1>Age in days Calculator App</h1>
+ <p>Hello dear, Click on the button "Click Me" and input the year you were born. You can also click on the button "Reset" to clear the previous output</p>
+ <div class="flex-box-container-1">
+ <div>
+ <button class="button-result" onclick="ageInDays()">Click me</button>
+</div>
+<div>
+ <button class="button-reset" onclick="reset()">Reset</button>
+</div>
+</div>
+<div class="flex-box-container-1">
+<div id="flex-box-result" onmouseover="this.style.backgroundColor='yellow'"> <!-- note code-->
+<h1 id="result">Result</h1>
+</div>
+</div>
+</div>
+
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<script>
+
+
+function ageInDays(){
+	 var dateOfBirth = prompt("What year were you born ?");//this recieves input
+  
+
+
+console.log("var dateOfBirth is complicated because the method prompt() is naturally treated as a "+ typeof dateOfBirth +", even though numbers pass through it. Its difficult to use its typeof to control it in the if/else statement."+"OR you can say the method prompt() which is attached to the var \"dateOfBirth\" is a string by default.");
+
+//1st Programme decision level
+if(dateOfBirth === null){
+	alert("Are you sure you don't want to do this ?. Click \"OK\" if you insisist.")//Message for backing out or canselling the programme
+}
+else if(dateOfBirth === ""){
+	alert("CHECK 1: You have not input the year you were born yet. Kindly input your Year of Birth before clicking on \"OK\"");//Message to warn against submission of an blank space without any input as value.
+	ageInDays();//this calls the function back from the beginning.
+}else{
+
+//2nd Programme decision level
+	 var ageInDayss = (2020 - dateOfBirth) * 365;
+	 
+
+
+	
+
+	 
+
+if(ageInDayss === 737300){
+	alert("CHECK 2: Do not submitt an \"Space bar\" as your answer. Kindly input your Year of Birth before clicking on \"OK\"");//Message warns against Space Bar or Space Bars submitted.
+
+	ageInDays();//this calls the function back from the beginning.
+}else if(isNaN(ageInDayss) === true){
+	 console.log("Function NaN() confirms that ageInDays is "+isNaN(ageInDayss));//NOTE 2: This variable returns NaN(Not a Number) if the value inputed through the prompt() is alphabet or symbols. isNaN() method tells us if the input is (true === incorrect value) or else (false === correct numerical value).
+
+	alert(`CHECK 3: Incorrect Input. What you inputed is either Alphabets or Symbols.You are required to input \"Numbers"\ as your value`);//Message warns against alphabetic or symbolic inputs.
+	
+	ageInDays();//this calls the function back from the beginning.
+}else{
+console.log(`${dateOfBirth} is the value inputed`);
+
+console.log("var ageInDayss which calculates all variables together is "+typeof ageInDayss+". It carries and output the Total Number - "+ ageInDayss);//We get to monitor and detect what this home variable becomes if it happens to gather wrong value, ie wrong values like NaN, string etc. The right value expected is number.
+ //NOTE 1: According to proper study, if "space" is submited as a value, this variable will return the set of numbers attached to it as a total sum(presently 737300) and that output a wrong result to the document if the var dateOfBirth does not receive a numeric input. Therefore, it is advised to use the wrong expected calculated result as a check and counter situations on space submitted as a value through the if/else statement.
+
+var concludeResult = "If you were born in the year "+ dateOfBirth +", you will be "+ ageInDayss +" days old on your next birthday this year 2020.";
+ //NOTE: with the help of a new variable(concludeResult) established, the value input can be successfully updated and displayed as output in the HTML document after calling  at any time the function and the right value has passed through all necessary checks. If not, the update value will not print on the HTML document.
+
+document.getElementById("result").innerHTML = concludeResult;
+}
+}
+}
+
+
+function reset(){
+	//var resetConfirmation = confirm(`Are you sure you want to reset the previous result`);
+	//document.getElementById("result").remove();
+//NOTE: the method remove() has prevented any further exection  of printing in the HTML document except if the page is refreshed. Is there any function that will do the work and allow the execution of the function ageInDays() ?.
+//1st solution: look for the method to refresh the page and attach it to the id in the function.
+
+// if(resetConfirmation === null){
+// 	break;
+// }else{
+	
+// }
+document.getElementById("result").innerHTML = "Result";//this is the solution to the problem, this will reset the prvious output and replace it with this value attached to it.
+}
+
+
+
+
+
+
+</script>
+</body>
+<footer>Powered By #Ayeni Ayodeji</footer>
+
+</html>
